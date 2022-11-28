@@ -16,8 +16,40 @@ export default function Home() {
       cadence: `
       import Groups from 0xDeployer
 
-      pub fun main(): {UInt64: Groups.GroupInfo} {
-          return Groups.groups
+      pub fun main(): {UInt64: Info} {
+          let groups: {UInt64: Info} = {}
+          for info in Groups.groups.values {
+              let collection = getAccount(info.owner).getCapability(Groups.CollectionPublicPath)
+                          .borrow<&Groups.Collection{Groups.CollectionPublic}>()!
+              let groupRef = collection.getGroup(id: info.id)!
+              groups[info.id] = Info(
+                  info.name,
+                  info.description,
+                  info.image,
+                  info.owner,
+                  info.id,
+                  groupRef.members.keys
+              )
+          }
+          return groups
+      }
+
+      pub struct Info {
+          pub let name: String
+          pub let description: String
+          pub let image: String
+          pub let owner: Address
+          pub let id: UInt64
+          pub let members: [Address]
+
+          init(_ name: String, _ description: String, _ image: String, _ owner: Address, _ id: UInt64, _ members: [Address]) {
+            self.name = name
+            self.description = description
+            self.image = image
+            self.owner = owner
+            self.id = id
+            self.members = members
+          }
       }
       `,
       args: (arg, t) => []
@@ -49,7 +81,7 @@ export default function Home() {
                 <div className=' px-3 py-2 text-gray-300 mt-3 static'>
                   <h1 className='font-bold text-lg'>{group.name}</h1>
                   <p className='text-md pt-3 text-gray-400 mb-10 truncate'>{group.description}</p>
-                  <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>120 members</p>
+                  <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
                 </div>
               </a>
             </Link>
