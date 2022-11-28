@@ -1,13 +1,12 @@
 {
-  "name": "#-DAPPNAME",
+  "name": "6-groups",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "mint": "node ./actions/mint_tokens.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@onflow/fcl": "1.1.0",
