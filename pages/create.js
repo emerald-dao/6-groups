@@ -64,30 +64,45 @@ export default function Submit() {
         <div className='space-y-3 mb-12'>
           <h1 className='text-gray-200 text-2xl text-center font-bold uppercase'>Create your community</h1>
         </div>
-        <div className='flex flex-col space-y-7'>
-          <div className='flex flex-col justify-between'>
-            <div className="flex flex-col w-full mb-7">
-              <label className="border rounded-xl h-48 flex items-center cursor-pointer justify-center text-white overflow-hidden" htmlFor="upload-button">
-                {
-                  preview ? <img src={preview} className="rounded-xl" alt="dummy" width="1000" height="30" /> :
-                    <h1>upload banner image</h1>
-                }
-              </label>
-              <input className="hidden" id="upload-button" type="file" onChange={(e) => uploadToIPFS(e.target.files[0])} />
+        <div className="flex space-x-8">
+            <div className='flex flex-col space-y-7 w-1/2'>
+            <div className='flex flex-col justify-between'>
+                <div className="flex flex-col w-full mb-7">
+                <label className="border rounded-xl h-48 flex items-center cursor-pointer justify-center text-white overflow-hidden" htmlFor="upload-button">
+                    {
+                    preview ? <img src={preview} className="rounded-xl" alt="dummy"  /> :
+                        <h1>upload banner image</h1>
+                    }
+                </label>
+                <input className="hidden" id="upload-button" type="file" onChange={(e) => uploadToIPFS(e.target.files[0])} />
+                </div>
+                <div className="flex flex-col">
+                <label className="text-gray-300 text-sm mb-3">Community name</label>
+                <input type="text" placeholder='The emerald group'
+                    className='px-7 py-3 w-[100%] focus:outline-none text-gray-200 focus:border-[#38E8C6] 
+                bg-[#00344B] border rounded-lg  border-gray-100' onChange={(e) => setName(e.target.value)} />
+                </div>
+
             </div>
             <div className="flex flex-col">
-              <label className="text-gray-300 text-sm mb-3">Community name</label>
-              <input type="text" placeholder='Should Jacob Tucker receive 1 million dollars?'
-                className='px-7 py-3 w-[80%] focus:outline-none text-gray-200 focus:border-[#38E8C6] 
-              bg-[#00344B] border rounded-lg  border-gray-100' onChange={(e) => setName(e.target.value)} />
+                <label className="text-gray-300 text-sm mb-3"> Description</label>
+                <textarea className='rounded-lg py-3 px-7 bg-[#00344B] border border-gray-100 focus:outline-none focus:border-[#38E8C6] text-gray-200 w-full' rows={8} onChange={(e) => setDescription(e.target.value)} placeholder='say something about the community...' />
             </div>
-
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-300 text-sm mb-3"> Description</label>
-            <textarea className='rounded-lg py-3 px-7 bg-[#00344B] border border-gray-100 focus:outline-none focus:border-[#38E8C6] text-gray-200' rows={8} onChange={(e) => setDescription(e.target.value)} placeholder='This is a vote to determine if Jacob Tucker should be given 1 million dollars...' />
-          </div>
-          <button disabled={ipfsCid === ''} className='rounded-lg py-3 px-7 text-lg font-semibold bg-[#2bbc9f]' onClick={createGroup} >{ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
+            <button disabled={ipfsCid === ''} className='rounded-lg py-3 px-7 text-lg font-semibold bg-[#2bbc9f] w-full' onClick={createGroup} >{ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
+            </div>
+            <div className=' w-1/2 max-w-max'>
+                <div className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl'>
+                    <div className="h-48 items-center justify-center overflow-hidden">
+                    {preview ? <img src={preview} className="rounded-lg" alt="dummy" /> : <img src='/placeholder.jpg' className="rounded-lg" alt="dummy"/> }
+                    </div>
+                    <div className=' px-3 py-2 text-gray-300 mt-3 static'>
+                    <h1 className='font-bold text-lg'>{name}</h1>
+                    <p className='text-md pt-3 text-gray-400 mb-10 truncate w-[90%]'>{description}</p>
+                    <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>1 members</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
       </div>
     </div>

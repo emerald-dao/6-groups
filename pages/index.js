@@ -64,11 +64,11 @@ export default function Home() {
       <div className='w-[70%] space-y-6'>
         <div className='flex justify-between'>
           <h1 className='text-gray-200 text-2xl'>All Communities</h1>
-          <Link href='/create'>
+          {user.loggedIn ? <Link href='/create'>
             <a>
               <button className='bg-blue-300 px-5 py-2 rounded-lg'>Create Community</button>
             </a>
-          </Link>
+          </Link> : <p className='text-gray-400 text-lg'>Please connect wallet</p>}
         </div>
         <hr />
         {groups.map(group => (
