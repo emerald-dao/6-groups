@@ -76,7 +76,7 @@ export default function Home() {
             <Link href={`/${group.owner}/${group.id}`}>
               <a className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl'>
                 <div className="h-48 items-center justify-center overflow-hidden">
-                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-lg" alt="dummy" /> :
+                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm" alt="dummy" /> :
                 </div>
                 <div className=' px-3 py-2 text-gray-300 mt-3 static'>
                   <h1 className='font-bold text-lg'>{group.name}</h1>
