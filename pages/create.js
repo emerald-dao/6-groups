@@ -94,7 +94,7 @@ export default function Submit() {
             <h1 className="text-white">2. Preview</h1>
             <div className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl'>
               <div className="h-48 items-center justify-center overflow-hidden">
-                {preview ? <img src={preview} className="rounded-lg" alt="dummy" /> : <img src='/placeholder.jpg' className="rounded-lg" alt="dummy" />}
+                {preview ? <img src={preview} className="rounded-t-sm" alt="dummy" /> : <img src='/placeholder.jpg' className="rounded-lg" alt="dummy" />}
               </div>
               <div className=' px-3 py-2 text-gray-300 mt-3 static'>
                 <h1 className='font-bold text-lg'>{name}</h1>
