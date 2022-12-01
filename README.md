@@ -128,45 +128,7 @@ After clicking "Approve", you will be taken back to the main dashboard. You shou
 
 ---
 
-# 💸 Checkpoint 6: Obtaining Tokens
-
-In order to obtain some tokens, let's actually mint some to our account.
-
-> In a new terminal window, run `npm run mint 0xf8d6e0586b0a20c7 30.0`
-
-This will mint 30.0 tokens to the account with address 0xf8d6e0586b0a20c7.
-
-If you go back to your application and refresh the page (making sure you are logged in with account 0xf8d6e0586b0a20c7), you will notice your balance update at the top:
-
-<img src="https://i.imgur.com/zH4fgxP.png" alt="balance update" width="400" />
-
-> To see how this command minted tokens to our account, check out `./actions/mint_tokens.js`
-
----
-
-# 📤 Checkpoint 7: Voting
-
-You can click to vote a certain way by clicking one of either "For", "Against", or "Abstain".
-
-> Click one of the voting options and see the transaction popup appear:
-
-<img src="https://i.imgur.com/AOjf5wx.png" alt="tx to vote" width="400" />
-
-If you click approve, you should see the vote tally change, and your address get added to the list of voters below. Remember, you can't vote again!
-
----
-
-# 📘 Checkpoint 8: Vote with a Different Account
-
-Let's try to submit a vote from another account!
-
-1. At the top, click "Logout" and log in with a different account than before.
-2. Join the DAO
-3. Mint tokens to the new account using the same command as in Checkpoint 6, making sure to change the address to the new account.
-4. Click on the same proposal and vote once again.
-5. Watch the tally change!
-
-# 💾 Checkpoint 9: Deploy it to testnet!
+# 💾 Checkpoint 6: Deploy it to testnet!
 
 📔 Ready to deploy to a public testnet?!?
 
@@ -202,14 +164,12 @@ Let's try to submit a vote from another account!
 "deployments": {
   "emulator": {
     "emulator-account": [
-      "ExampleToken",
-      "Vote"
+      "Groups"
     ]
   },
   "testnet": {
     "testnet-account": [
-      "ExampleToken",
-      "Vote"
+      "Groups"
     ]
   }
 }
@@ -227,28 +187,24 @@ flow project deploy --network=testnet
 
 In your .env file, change the following:
 1. `NEXT_PUBLIC_CONTRACT_ADDRESS` to your generated testnet address
-2. `NEXT_PUBLIC_STANDARD_ADDRESS` to `0x9a0766d93b6608b7`
-3. `PRIVATE_KEY` to your private key
-4. `NEXT_PUBLIC_ACCESS_NODE` to `https://rest-testnet.onflow.org`
-5. `NEXT_PUBLIC_WALLET` to `https://fcl-discovery.onflow.org/testnet/authn` 
+2. `NEXT_PUBLIC_ACCESS_NODE` to `https://rest-testnet.onflow.org`
+3. `NEXT_PUBLIC_WALLET` to `https://fcl-discovery.onflow.org/testnet/authn` 
 
 You can now terminate all your terminals since we no longer need to run our own local blockchain or wallet. Everything lives on testnet!
 
 Let's try out our application on testnet:
 
 1. Run `npm run dev` to start your application in a terminal.
-2. On http://localhost:3000/, click "connect" and log in to your Blocto or Lilico wallet, making sure to copy the address you log in with.
-3. Join the DAO and run the transaction. Wait ~30 seconds and then refresh the page. You should now be in the DAO.
-4. Create a new proposal, same as before.
-5. To obtain tokens, run `npm run mint [THE ADDRESS YOU COPIED IN STEP 2] [AMOUNT OF TOKENS]` like we did in Checkpoint 6.
-6. In your terminal, you should see a printed "Transaction Id". If you go to [Testnet Flowscan](https://testnet.flowscan.org/) and paste in that Transaction Id, you should see information about that minting transaction.
-7. Attempt to vote in your proposal.
+2. On http://localhost:3000/, click "connect" and log in to your Blocto or Lilico wallet.
+3. Join the Emerald City group by running the associated transaction. Wait ~30 seconds and then refresh the page. You should now be in the group.
+4. Create a new group, same as before.
+5. Chat in any group of your wish.
 
 ---
 
 # 📝 Make Edits!
 
-🔏 You can also check out your token smart contract `ExampleToken.cdc` in `flow/cadence/ExampleToken.cdc`, or your voting/DAO smart contract `Vote.cdc` in `flow/cadence/Vote.cdc`
+🔏 You can also check out your groups smart contract `Groups.cdc` in `flow/cadence/Groups.cdc`.
 
 💼 Take a quick look at how your contract get deployed in `flow.json`.
 
