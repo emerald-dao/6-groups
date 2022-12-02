@@ -80,7 +80,7 @@ export default function Home() {
                 </div>
                 <div className=' px-3 py-2 text-gray-300 mt-3 static'>
                   <h1 className='font-bold text-lg'>{group.name}</h1>
-                  <p className='text-md pt-3 text-gray-400 mb-10 line-clamp-2'>{group.description}</p>
+                  <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-10'>{group.description}</p>
                   <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
                 </div>
               </a>
