@@ -97,7 +97,7 @@ export default function Submit() {
                     </div>
                     <div className=' px-3 py-2 text-gray-300 mt-3 static'>
                     <h1 className='font-bold text-lg'>{name}</h1>
-                    <p className='text-md pt-3 text-gray-400 mb-10 truncate w-[90%]'>{description}</p>
+                    <p className='text-md pt-3 text-gray-400 mb-10 line-clamp-2'>{description}</p>
                     <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>1 members</p>
                     </div>
                 </div>
