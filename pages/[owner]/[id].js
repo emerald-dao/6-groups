@@ -180,7 +180,7 @@ export default function Community() {
                 <div className='bg-[#00384b] mt-10 px-7 py-4 rounded-lg'>
                   <h1 className='text-gray-300 text-lg font-semibold pb-4'>Community Forum</h1>
                   <div className='flex space-x-2'>
-                    <input className='focus:outline-none px-3 py-1 rounded-lg w-full bg-gray-100' placeholder='say something cool' onChange={(e) => setContent(e.target.value)} />
+                    <input className='focus:outline-none px-3 py-1 rounded-lg w-full bg-gray-100' placeholder='Hello everyone! My name is...' onChange={(e) => setContent(e.target.value)} />
                     <button className='px-4 py-1 bg-blue-300 rounded-lg' onClick={postMessage}>
                       Submit
                     </button>

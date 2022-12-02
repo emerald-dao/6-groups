@@ -62,47 +62,50 @@ export default function Submit() {
     <div className='flex justify-center pt-20'>
       <div className='w-[70%] space-y-6'>
         <div className='space-y-3 mb-12'>
-          <h1 className='text-gray-200 text-2xl text-center font-bold uppercase'>Create your community</h1>
+          <h1 className='text-gray-200 text-2xl text-center font-bold'>Create Your Community</h1>
         </div>
         <div className="flex space-x-8">
-            <div className='flex flex-col space-y-7 w-1/2'>
+          <div className='flex flex-col space-y-7 w-1/2'>
+            <h1 className="text-white">1. Configure</h1>
             <div className='flex flex-col justify-between'>
-                <div className="flex flex-col w-full mb-7">
+              <div className="flex flex-col w-full mb-7">
                 <label className="border rounded-xl h-48 flex items-center cursor-pointer justify-center text-white overflow-hidden" htmlFor="upload-button">
-                    {
-                    preview ? <img src={preview} className="rounded-xl" alt="dummy"  /> :
-                        <h1>upload banner image</h1>
-                    }
+                  {
+                    preview ? <img src={preview} className="rounded-xl" alt="dummy" /> :
+                      <h1>upload banner image</h1>
+                  }
                 </label>
                 <input className="hidden" id="upload-button" type="file" onChange={(e) => uploadToIPFS(e.target.files[0])} />
-                </div>
-                <div className="flex flex-col">
-                <label className="text-gray-300 text-sm mb-3">Community name</label>
-                <input type="text" placeholder='The emerald group'
-                    className='px-7 py-3 w-[100%] focus:outline-none text-gray-200 focus:border-[#38E8C6] 
+              </div>
+              <div className="flex flex-col">
+                <label className="text-gray-300 text-sm mb-3">Community Name</label>
+                <input type="text" placeholder='Emerald City'
+                  className='px-7 py-3 w-[100%] focus:outline-none text-gray-200 focus:border-[#38E8C6] 
                 bg-[#00344B] border rounded-lg  border-gray-100' onChange={(e) => setName(e.target.value)} />
-                </div>
+              </div>
 
             </div>
             <div className="flex flex-col">
-                <label className="text-gray-300 text-sm mb-3"> Description</label>
-                <textarea className='rounded-lg py-3 px-7 bg-[#00344B] border border-gray-100 focus:outline-none focus:border-[#38E8C6] text-gray-200 w-full' rows={8} onChange={(e) => setDescription(e.target.value)} placeholder='say something about the community...' />
+              <label className="text-gray-300 text-sm mb-3"> Description</label>
+              <textarea className='rounded-lg py-3 px-7 bg-[#00344B] border border-gray-100 focus:outline-none focus:border-[#38E8C6] text-gray-200 w-full' rows={8} onChange={(e) => setDescription(e.target.value)} placeholder='This is a community filled with driven artists...' />
             </div>
-            <button disabled={ipfsCid === ''} className='rounded-lg py-3 px-7 text-lg font-semibold bg-[#2bbc9f] w-full' onClick={createGroup} >{ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
+          </div>
+          <div className=' w-1/2 max-w-max space-y-7'>
+            <h1 className="text-white">2. Preview</h1>
+            <div className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl'>
+              <div className="h-48 items-center justify-center overflow-hidden">
+                {preview ? <img src={preview} className="rounded-t-sm" alt="dummy" /> : <img src='/placeholder.jpg' className="rounded-lg" alt="dummy" />}
+              </div>
+              <div className=' px-3 py-2 text-gray-300 mt-3 static'>
+                <h1 className='font-bold text-lg'>{name}</h1>
+                <p className='text-md pt-3 text-gray-400 mb-10 truncate w-[90%]'>{description}</p>
+                <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>1 member</p>
+              </div>
             </div>
-            <div className=' w-1/2 max-w-max'>
-                <div className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl'>
-                    <div className="h-48 items-center justify-center overflow-hidden">
-                    {preview ? <img src={preview} className="rounded-lg" alt="dummy" /> : <img src='/placeholder.jpg' className="rounded-lg" alt="dummy"/> }
-                    </div>
-                    <div className=' px-3 py-2 text-gray-300 mt-3 static'>
-                    <h1 className='font-bold text-lg'>{name}</h1>
-                    <p className='text-md pt-3 text-gray-400 mb-10 line-clamp-2'>{description}</p>
-                    <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>1 members</p>
-                    </div>
-                </div>
-            </div>
-            
+            <h1 className="text-white">3. Finish</h1>
+            <button disabled={ipfsCid === ''} className='rounded-lg py-3 px-7 text-lg font-semibold mt-5 bg-[#2bbc9f] w-full' onClick={createGroup} >{ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
+          </div>
+
         </div>
       </div>
     </div>

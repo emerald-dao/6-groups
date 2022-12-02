@@ -128,5 +128,11 @@ pub contract Groups {
     self.groups = {}
     self.CollectionPublicPath = /public/EmeraldAcademyGroupsCollection
     self.CollectionStoragePath = /storage/EmeraldAcademyGroupsCollection
+
+    self.account.save(<- Groups.createEmptyCollection(), to: Groups.CollectionStoragePath)
+    self.account.link<&Groups.Collection{Groups.CollectionPublic}>(Groups.CollectionPublicPath, target: Groups.CollectionStoragePath)
+
+    let collection = self.account.borrow<&Groups.Collection>(from: Groups.CollectionStoragePath)!
+    collection.createGroup(name: "Emerald City", description: "A DAO dedicated to helping communities launch & grow on the Flow blockchain.", image: "bafkreidntdth766tpyfamwg6v4dyidn3rzz22cfhywv5byknz2s5xurgey")
   }
 }

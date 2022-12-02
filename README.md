@@ -1,13 +1,13 @@
 # 💎 Emerald Academy
 
-## 🚩 Challenge 4: Voting
+## 🚩 Challenge 6: Groups
 
-🎫 Deploy a Voting contract to learn the basics of voting inside of a DAO on the Flow blockchain and Cadence. You'll use:
+🎫 Deploy a subcommunities contract to learn the basics of voting inside of a DAO on the Flow blockchain and Cadence. You'll use:
 - The local Flow emulator to deploy smart contracts. 
 - The local Flow dev wallet to log into test accounts.
 - A template Next.js app with sample scripts and transactions to interact with your contract.
 
-🌟 The final deliverable is a DApp that spins up an open DAO that lets community members create proposals and vote within it based on token holdings that govern the DAO.
+🌟 The final deliverable is a DApp that allows users to create Groups, join & leave them, discover Groups, and chat inside of them.
 
 💬 Meet other builders working on this challenge and get help in the [Emerald City Discord](https://discord.gg/emeraldcity)!
 
@@ -21,13 +21,13 @@ Required:
 * [Flow CLI](https://docs.onflow.org/flow-cli/install/)  (🧨 Make sure to install the correct link for your system 🧨). You know you have installed it if you type `flow version` in your terminal and it prints a version.
 
 ```sh
-git clone https://github.com/emerald-dao/4-voting.git
+git clone https://github.com/emerald-dao/6-groups.git
 ```
 
 > in a terminal window, 📱 install the dependencies start your frontend:
 
 ```sh
-cd 4-voting
+cd 6-groups
 npm install
 npm run dev
 ```
@@ -35,7 +35,7 @@ npm run dev
 > in a second terminal window, start your 👷‍ local emulator:
 
 ```bash
-cd 4-voting
+cd 6-groups
 flow emulator start -v
 ```
 
@@ -44,7 +44,7 @@ flow emulator start -v
 > in a third terminal window, 💾 deploy your contract and 💸 start your local wallet:
 
 ```bash
-cd 4-voting
+cd 6-groups
 flow project deploy
 flow dev-wallet
 ```
@@ -63,122 +63,72 @@ We'll be using **the local Flow dev wallet**.
 
 ---
 
-# 🔖 Checkpoint 2: Name & Describe Your DAO
+# 🔖 Checkpoint 2: Viewing a Group
 
-After logging in to our DApp, you will see that there is no name or description for our DAO:
+After logging in to our DApp, you will notice that there is already a community up and running: Emerald City!
 
-<img src="https://i.imgur.com/YxDuWN5.png" alt="empty" width="400" />
+<img src="https://i.imgur.com/gWlGUwh.png" alt="emerald city group" width="400" />
 
-> Open up `./pages/index.js` and scroll down until you see `{"<Example DAO>"}` and `{"<Replace this with a description of your DAO>"}`. Replace these lines with a name & description of your DAO.
+> Click on Emerald City
 
-You will now see that being changed on your frontend:
+You will be taken to a page that shows all the details of Emerald City:
 
-<img src="https://i.imgur.com/nRHh0Mr.png" alt="name & describe dao" width="400" />
+<img src="https://i.imgur.com/BIuoZPm.png" alt="group page" width="400" />
 
-# 👪 Checkpoint 3: Join the DAO
+Because you are logged in to the Service Account, and that account is the owner of this group, you are in the community already. Let's try to log into a different account and join this community.
 
-Now that we have given our DAO a name & description, let's join the DAO!
+# 👪 Checkpoint 3: Joining a Group
 
-> Click the "Join this DAO" button and you will see a transaction model pop up:
+Let's join the Emerald City group from a different account!
 
-<img src="https://i.imgur.com/pvRoZPb.png" alt="join dao tx" width="400" />
+> At the top, click "Logout" and log back in with Account A
 
-If you click "Approve", you will be granted access to the DAO's main dashboard.
+Account A does not belong to this group, so we cannot do thing like see the group's forum. 
 
-Under the hood, you just set up your own token vault for the token that is governing this DAO. 
+> To join, click the "Join Community" button and you will see a transaction model pop up:
 
-> To see the smart contract for this token, you can go to `./flow/cadence/ExampleToken.cdc`
+<img src="https://i.imgur.com/rFUkEKX.png" alt="join group" width="400" />
 
-> To see how this transaction was run, check out the `joinDAO` function inside of `./pages/index.js`
+If you click "Approve", you will notice that your address is now added to the members list. Woohoo! We successfully joined the group. If you wanted to, you could also leave the group.
 
-# 📑 Checkpoint 4: Create a Proposal
+# 📑 Checkpoint 4: Type a Message
 
-After joining the DAO, you will be brought to the main dashboard of your DAO. You can see there are no active proposals, so let's make one!
+Now that we joined the group, we can start to use the forum!
 
-> Press the "Submit Proposal" button on the right side
+> Type a message into the community forum and click "Submit". You will notice a transaction popup, click Approve.
 
-To create a proposal, you must fill in:
-- The name of the proposal
-- The image of the proposal
-- A start & end date
-- A description of the proposal
+<img src="https://i.imgur.com/OKkFToc.png" alt="join group" width="400" />
 
-<img src="https://i.imgur.com/HMfsBPQ.png" alt="filling in proposal fields" width="400" />
-
-> Click "Submit Proposal" to run a transaction that will create the new proposal on-chain
-
-<img src="https://i.imgur.com/Fg8Qmuz.png" alt="run submit proposal tx" width="400" />
-
-A popup will appear to create your new proposal. This is a transaction that will change data on the blockchain. Specifically, it is creating a new `Proposal` resource and storing it in your DAOs collection of proposals. 
-
-> To see how this transaction was run, check out the `submitProposal` function inside of `./pages/submit.js`
-
-> For more on Cadence & Resources, you can look at the contract code in `./flow/cadence/Vote.cdc` or check out our <a href="https://github.com/emerald-dao/beginner-cadence-course">Beginner Cadence Course</a>
-
-After clicking "Approve", you will be taken back to the main dashboard. You should now see a vote in play:
-
-<img src="https://i.imgur.com/PQXUtbb.png" alt="a vote is now in play" width="400" />
+Your message has been added to the community forum, stored completely on-chain!
 
 ---
 
-# 👀 Checkpoint 5: Viewing a Proposal
+# 👀 Checkpoint 5: Creating a Group
 
-Now that a proposal has been created, lets click on it and see what it looks like:
+To create a group, head back to the main page and click "Create Group". Once you are there, you must fill in:
+- An image for your group
+- The name of your group
+- A description for your group
 
-<img src="https://i.imgur.com/R78d772.png" alt="active proposal" width="400" />
+You will be able to preview your new group on the right-hand side:
 
-You should see:
-- Name
-- Description
-- Image
-- Vote counts
-- Who voted for what option
-- Start & end date
-- Who submitted the proposal
+<img src="https://i.imgur.com/yvZCW6P.png" alt="preview group" width="400" />
 
-In order to actually vote however, we must own some tokens inside the DAO!
+> Click "Create Group" to run a transaction that will create the new group on-chain
 
----
+A popup will appear to create your new proposal. This is a transaction that will change data on the blockchain. Specifically, it is creating a new `Group` resource and storing it in your collection of Groups that you have created.
 
-# 💸 Checkpoint 6: Obtaining Tokens
+> To see how this transaction was run, check out the `createGroup` function inside of `./pages/create.js`
 
-In order to obtain some tokens, let's actually mint some to our account.
+> For more on Cadence & Resources, you can look at the contract code in `./flow/cadence/Groups.cdc` or check out our <a href="https://github.com/emerald-dao/beginner-cadence-course">Beginner Cadence Course</a>
 
-> In a new terminal window, run `npm run mint 0xf8d6e0586b0a20c7 30.0`
+After clicking "Approve", you will be taken back to the main dashboard. You should now see your group:
 
-This will mint 30.0 tokens to the account with address 0xf8d6e0586b0a20c7.
-
-If you go back to your application and refresh the page (making sure you are logged in with account 0xf8d6e0586b0a20c7), you will notice your balance update at the top:
-
-<img src="https://i.imgur.com/zH4fgxP.png" alt="balance update" width="400" />
-
-> To see how this command minted tokens to our account, check out `./actions/mint_tokens.js`
+<img src="" alt="see your new group" width="400" />
 
 ---
 
-# 📤 Checkpoint 7: Voting
-
-You can click to vote a certain way by clicking one of either "For", "Against", or "Abstain".
-
-> Click one of the voting options and see the transaction popup appear:
-
-<img src="https://i.imgur.com/AOjf5wx.png" alt="tx to vote" width="400" />
-
-If you click approve, you should see the vote tally change, and your address get added to the list of voters below. Remember, you can't vote again!
-
----
-
-# 📘 Checkpoint 8: Vote with a Different Account
-
-Let's try to submit a vote from another account!
-
-1. At the top, click "Logout" and log in with a different account than before.
-2. Join the DAO
-3. Mint tokens to the new account using the same command as in Checkpoint 6, making sure to change the address to the new account.
-4. Click on the same proposal and vote once again.
-5. Watch the tally change!
-
-# 💾 Checkpoint 9: Deploy it to testnet!
+# 💾 Checkpoint 6: Deploy it to testnet!
 
 📔 Ready to deploy to a public testnet?!?
 
@@ -214,14 +164,12 @@ Let's try to submit a vote from another account!
 "deployments": {
   "emulator": {
     "emulator-account": [
-      "ExampleToken",
-      "Vote"
+      "Groups"
     ]
   },
   "testnet": {
     "testnet-account": [
-      "ExampleToken",
-      "Vote"
+      "Groups"
     ]
   }
 }
@@ -239,28 +187,24 @@ flow project deploy --network=testnet
 
 In your .env file, change the following:
 1. `NEXT_PUBLIC_CONTRACT_ADDRESS` to your generated testnet address
-2. `NEXT_PUBLIC_STANDARD_ADDRESS` to `0x9a0766d93b6608b7`
-3. `PRIVATE_KEY` to your private key
-4. `NEXT_PUBLIC_ACCESS_NODE` to `https://rest-testnet.onflow.org`
-5. `NEXT_PUBLIC_WALLET` to `https://fcl-discovery.onflow.org/testnet/authn` 
+2. `NEXT_PUBLIC_ACCESS_NODE` to `https://rest-testnet.onflow.org`
+3. `NEXT_PUBLIC_WALLET` to `https://fcl-discovery.onflow.org/testnet/authn` 
 
 You can now terminate all your terminals since we no longer need to run our own local blockchain or wallet. Everything lives on testnet!
 
 Let's try out our application on testnet:
 
 1. Run `npm run dev` to start your application in a terminal.
-2. On http://localhost:3000/, click "connect" and log in to your Blocto or Lilico wallet, making sure to copy the address you log in with.
-3. Join the DAO and run the transaction. Wait ~30 seconds and then refresh the page. You should now be in the DAO.
-4. Create a new proposal, same as before.
-5. To obtain tokens, run `npm run mint [THE ADDRESS YOU COPIED IN STEP 2] [AMOUNT OF TOKENS]` like we did in Checkpoint 6.
-6. In your terminal, you should see a printed "Transaction Id". If you go to [Testnet Flowscan](https://testnet.flowscan.org/) and paste in that Transaction Id, you should see information about that minting transaction.
-7. Attempt to vote in your proposal.
+2. On http://localhost:3000/, click "connect" and log in to your Blocto or Lilico wallet.
+3. Join the Emerald City group by running the associated transaction. Wait ~30 seconds and then refresh the page. You should now be in the group.
+4. Create a new group, same as before.
+5. Chat in any group of your wish.
 
 ---
 
 # 📝 Make Edits!
 
-🔏 You can also check out your token smart contract `ExampleToken.cdc` in `flow/cadence/ExampleToken.cdc`, or your voting/DAO smart contract `Vote.cdc` in `flow/cadence/Vote.cdc`
+🔏 You can also check out your groups smart contract `Groups.cdc` in `flow/cadence/Groups.cdc`.
 
 💼 Take a quick look at how your contract get deployed in `flow.json`.
 
