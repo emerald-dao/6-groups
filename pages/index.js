@@ -72,16 +72,16 @@ export default function Home() {
         </div>
         <hr />
         {groups.map(group => (
-          <div className='pt-5 grid grid-cols-2 gap-x-7 gap-y-7 max-w-max' key={group.id}>
+        <div className='pt-5 grid grid-cols-2 gap-x-7 gap-y-7' key={group.id}>
             <Link href={`/${group.owner}/${group.id}`}>
-              <a className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl max-h-max'>
-                <div className="md:h-48 items-center justify-center overflow-hidden">
-                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm" alt="dummy" /> :
-                </div>
-                <div className=' px-3 py-2 text-gray-300 mt-3 static'>
-                  <h1 className='font-bold text-lg'>{group.name}</h1>
-                  <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-10'>{group.description}</p>
-                  <p className='text-center text-sm mt-5 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
+              <a className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl w-full'>
+                <div className="h-full items-center justify-center overflow-hidden">
+                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm object-cover lg:h-72 md:h-48 h-1/2 w-full object-center" alt="dummy" /> :
+                  <div className=' px-3 py-1 text-gray-300 md:mt-3 mt-0 static'>
+                    <h1 className='font-bold text-lg'>{group.name}</h1>
+                    <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-12'>{group.description}</p>
+                    <p className='text-center md:text-sm text-xs mt-7 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
+                  </div>
                 </div>
               </a>
             </Link>
