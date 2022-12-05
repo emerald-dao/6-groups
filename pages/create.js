@@ -6,7 +6,7 @@ import { NFTStorage } from "nft.storage";
 export default function Submit() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState('');
   const [ipfsCid, setIpfsCid] = useState('');
 
   const NFT_STORAGE_TOKEN = process.env.NEXT_PUBLIC_NFTSTORAGE_KEY;
@@ -103,7 +103,7 @@ export default function Submit() {
               </div>
             </div>
             <h1 className="text-white">3. Finish</h1>
-            <button disabled={ipfsCid === ''} className='rounded-lg py-3 px-7 text-lg font-semibold mt-5 bg-[#2bbc9f] w-full' onClick={createGroup} >{ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
+            <button disabled={ipfsCid === '' || name === '' || description === ''} className='rounded-lg py-3 px-7 text-lg font-semibold mt-5 bg-[#2bbc9f] w-full' onClick={createGroup} >{preview === '' ? 'Configure Your Group' : ipfsCid === '' ? 'Uploading image...' : 'Create Community'}</button>
           </div>
 
         </div>
