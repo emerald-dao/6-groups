@@ -72,11 +72,11 @@ export default function Home() {
         </div>
         <hr />
         {groups.map(group => (
-        <div className='pt-5 grid grid-cols-2 gap-x-7 gap-y-7' key={group.id}>
+          <div className='pt-5 grid grid-cols-2 gap-x-7 gap-y-7' key={group.id}>
             <Link href={`/${group.owner}/${group.id}`}>
               <a className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl w-full'>
                 <div className="h-full items-center justify-center overflow-hidden">
-                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm object-cover lg:h-72 md:h-48 h-1/2 w-full object-center" alt="dummy" /> :
+                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm object-cover lg:h-40 w-full object-center" alt="dummy" /> :
                   <div className=' px-3 py-1 text-gray-300 md:mt-3 mt-0 static'>
                     <h1 className='font-bold text-lg'>{group.name}</h1>
                     <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-12'>{group.description}</p>
