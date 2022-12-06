@@ -71,22 +71,27 @@ export default function Home() {
           </Link> : <p className='text-gray-400 text-lg'>Please connect wallet</p>}
         </div>
         <hr />
-        {groups.map(group => (
-          <div className='pt-5 grid grid-cols-2 gap-x-7 gap-y-7' key={group.id}>
-            <Link href={`/${group.owner}/${group.id}`}>
-              <a className='rounded-t-lg bg-[#00384b] cursor-pointer drop-shadow-xl w-full'>
-                <div className="h-full items-center justify-center overflow-hidden">
-                  <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm object-cover lg:h-40 w-full object-center" alt="dummy" /> :
-                  <div className=' px-3 py-1 text-gray-300 md:mt-3 mt-0 static'>
-                    <h1 className='font-bold text-lg'>{group.name}</h1>
-                    <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-12'>{group.description}</p>
-                    <p className='text-center md:text-sm text-xs mt-7 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
+
+        <div className='flex flex-wrap justify-between '>
+          {groups.map(group => (
+            
+            <div className='w-[49%] bg-[#00384b] mb-5' key={group.id}>
+              <Link href={`/${group.owner}/${group.id}`}>
+                <a className='rounded-t-lg  cursor-pointer drop-shadow-xl'>
+                  <div className="h-full items-center justify-center overflow-hidden">
+                    <img src={`https://nftstorage.link/ipfs/${group.image}`} className="rounded-t-sm object-cover lg:h-40 h-1/2 w-full object-center" alt="dummy" /> :
+                    <div className=' px-3 py-1 text-gray-300 md:mt-3 mt-0 static'>
+                      <h1 className='font-bold text-lg'>{group.name}</h1>
+                      <p className='text-md pt-3 line-clamp-2 text-gray-400 mb-12'>{group.description}</p>
+                      <p className='text-center md:text-sm text-xs mt-7 mb-1 mr-2 text-green-500 rounded-full px-3 py-2 bg-gray-800 max-w-max absolute bottom-0 right-0'>{group.members.length} members</p>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </Link>
-          </div>
-        ))}
+                </a>
+              </Link>
+              </div>
+          ))}
+
+        </div>
       </div>
     </div>
   )
