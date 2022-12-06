@@ -202,6 +202,37 @@ Let's try out our application on testnet:
 
 ---
 
+# Storing Image Assets
+
+You may be wondering: How are you storing images? Where do they go? 
+
+Thanks to our amazing supporters at <a href="https://filecoin.io/">Filecoin</a>, we decided to use <a href="https://nft.storage/">NFT.Storage</a> to store our image assets on IPFS. NFT.Storage allows you to upload an image, and in return it gives you what's called a "CID", or a long list of random numbers and letters. You can use this to fetch your image from a URL and properly display it.
+
+This is also especially useful when we think about storage costs. We would never want to store images directly in our smart contract because that would be expensive (having to store hundreds of Megabytes, or potentially Gigabytes). Instead, we store the CID, which is just a small string and much cheaper.
+
+This is how simple it is to store images on IPFS in your code:
+1. `npm install nft.storage`
+2. Go to <a href="https://nft.storage/">NFT.Storage</a> > Login > API Keys > + New Key > Actions > Copy
+3. Paste your key in your `.env` file
+4. Added the following code in our `/pages/create.js` file:
+
+```jsx
+import { NFTStorage } from "nft.storage";
+
+const [preview, setPreview] = useState('');
+const [ipfsCid, setIpfsCid] = useState('');
+
+const NFT_STORAGE_TOKEN = process.env.NEXT_PUBLIC_NFTSTORAGE_KEY;
+const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+
+async function uploadToIPFS(file) {
+  let prev = URL.createObjectURL(file)
+  setPreview(prev)
+  const cid = await client.storeBlob(file);
+  setIpfsCid(cid);
+}
+```
+
 # 📝 Make Edits!
 
 🔏 You can also check out your groups smart contract `Groups.cdc` in `flow/cadence/Groups.cdc`.
