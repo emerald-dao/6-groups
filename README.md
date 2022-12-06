@@ -181,7 +181,7 @@ After clicking "Approve", you will be taken back to the main dashboard. You shou
 flow project deploy --network=testnet
 ```
 
-<img src="https://i.imgur.com/nsASuV3.png" alt="deploy contract to testnet" />
+<img src="https://i.imgur.com/s899jKs.png" alt="deploy contract to testnet" />
 
 > Lastly, configure your .env file to point to Flow TestNet so we can interact with your new contract.
 
