@@ -233,6 +233,8 @@ async function uploadToIPFS(file) {
 }
 ```
 
+5. Store the IPFS CID in your smart contract code. Inside `/flow/cadence/Groups.cdc`, check out the `image` variable under the `GroupInfo` struct. That stores the IPFS CID.
+
 # 📝 Make Edits!
 
 🔏 You can also check out your groups smart contract `Groups.cdc` in `flow/cadence/Groups.cdc`.
